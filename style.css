@@ -1,0 +1,392 @@
+/* ================= RESET ================= */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+:root {
+  --bg-dark: #020617;
+  --bg-card: #0b1226;
+  --accent: #38bdf8;
+  --text-main: #e5e7eb;
+  --text-muted: #9ca3af;
+}
+
+body {
+  font-family: "Segoe UI", system-ui, sans-serif;
+  background-color: var(--bg-dark);
+  color: var(--text-main);
+  line-height: 1.6;
+}
+
+/* ================= NAVBAR ================= */
+.navbar {
+  position: fixed;
+  top: 0;
+  width: 100%;
+  height: 72px;
+  background: rgba(2, 6, 23, 0.9);
+  backdrop-filter: blur(10px);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 48px;
+  z-index: 1000;
+}
+
+.logo {
+  font-size: 20px;
+  font-weight: 600;
+}
+
+.navbar nav a {
+  color: var(--text-muted);
+  margin-left: 28px;
+  text-decoration: none;
+  font-size: 14px;
+}
+
+.navbar nav a:hover {
+  color: var(--accent);
+}
+
+/* ================= HERO ================= */
+.hero {
+  height: 100vh;
+  background:
+    linear-gradient(to bottom, rgba(2,6,23,0.9), rgba(2,6,23,0.95)),
+    url("https://images.unsplash.com/photo-1446776811953-b23d57bd21aa") center/cover;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.hero-glass {
+  background: rgba(11,18,38,0.6);
+  backdrop-filter: blur(18px);
+  border-radius: 28px;
+  padding: 64px 56px;
+  text-align: center;
+  max-width: 700px;
+  box-shadow: 0 40px 100px rgba(0,0,0,0.6);
+}
+
+/* Floating text */
+.hero-title {
+  font-size: clamp(42px, 6vw, 64px);
+  font-weight: 700;
+  animation: floatText 6s ease-in-out infinite;
+}
+
+.hero-subtitle {
+  margin-top: 18px;
+  color: var(--text-muted);
+  font-size: 18px;
+  animation: floatText 6s ease-in-out infinite;
+  animation-delay: 0.4s;
+}
+
+@keyframes floatText {
+  0%,100% { transform: translateY(0); }
+  50% { transform: translateY(-10px); }
+}
+
+/* CTA */
+.hero-btn {
+  display: inline-block;
+  margin-top: 40px;
+  padding: 16px 44px;
+  background: linear-gradient(135deg, #38bdf8, #0ea5e9);
+  color: #020617;
+  border-radius: 999px;
+  font-size: 16px;
+  font-weight: 600;
+  text-decoration: none;
+}
+
+/* Audio toggle */
+.audio-toggle {
+  margin-top: 28px;
+  font-size: 14px;
+  color: var(--text-muted);
+}
+
+.audio-toggle audio {
+  margin-top: 10px;
+  width: 240px;
+}
+
+/* ================= PLANET GRID ================= */
+.planet-grid {
+  max-width: 1200px;
+  margin: auto;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 32px;
+}
+
+.planet-card {
+  background: linear-gradient(180deg, #0b1226, #020617);
+  padding: 32px 24px;
+  border-radius: 20px;
+  text-align: center;
+  transition: transform 0.4s, box-shadow 0.4s;
+}
+
+.planet-card img {
+  width: 120px;
+  height: 120px;
+  border-radius: 50%;
+  margin-bottom: 20px;
+}
+
+.planet-card h3 {
+  font-size: 20px;
+  margin-bottom: 8px;
+}
+
+.planet-card p {
+  font-size: 14px;
+  color: var(--text-muted);
+  margin-bottom: 20px;
+}
+
+.planet-card:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 25px 60px rgba(0,0,0,0.6);
+}
+
+/* ================= PLANET DETAIL PAGE ================= */
+.planet-detail {
+  max-width: 900px;
+  margin: auto;
+  text-align: center;
+  padding: 120px 20px;
+}
+
+.rotate {
+  width: 240px;
+  margin: 32px auto;
+  animation: spin 18s linear infinite;
+}
+
+@keyframes spin {
+  from { transform: rotate(0); }
+  to { transform: rotate(360deg); }
+}
+
+/* ================= FORM ================= */
+.form-section form {
+  max-width: 480px;
+  margin: auto;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+input, select, textarea {
+  padding: 14px 16px;
+  border-radius: 12px;
+  border: none;
+  background: var(--bg-card);
+  color: white;
+}
+
+/* ================= FOOTER ================= */
+.footer {
+  padding: 32px;
+  text-align: center;
+  font-size: 14px;
+  color: var(--text-muted);
+}
+
+/* ================= RESPONSIVE ================= */
+@media (max-width: 768px) {
+  .navbar {
+    padding: 0 20px;
+  }
+
+  .navbar nav a {
+    margin-left: 16px;
+    font-size: 13px;
+  }
+}
+/* ================= FORCE SAME SIZE FOR ALL PLANET IMAGES ================= */
+
+/* Target any large planet image on planet pages */
+img[src*="Mercury"],
+img[src*="Venus"],
+img[src*="Earth"],
+img[src*="Mars"],
+img[src*="Jupiter"],
+img[src*="Saturn"],
+img[src*="Uranus"],
+img[src*="Neptune"],
+img[src*="wikipedia"] {
+  width: 180px !important;
+  height: 180px !important;
+  object-fit: cover;
+  border-radius: 50%;
+  display: block;
+  margin: 32px auto;
+}
+
+/* Rotation animation */
+img[src*="wikipedia"] {
+  animation: spin 18s linear infinite;
+}
+
+/* Safe animation */
+@keyframes spin {
+  from { transform: rotate(0deg); }
+  to   { transform: rotate(360deg); }
+}
+
+/* ================= PLANET PAGE GLOBAL STYLES ================= */
+
+/* Page background for planet pages */
+body {
+  background: radial-gradient(circle at top, #020617, #000);
+}
+
+/* Planet page main heading */
+h1, h2 {
+  text-align: center;
+  margin-top: 120px; /* space for fixed navbar */
+  font-size: 42px;
+  font-weight: 700;
+  letter-spacing: 1px;
+}
+
+/* Planet description text */
+p {
+  max-width: 700px;
+  margin: 16px auto;
+  text-align: center;
+  font-size: 16px;
+  color: #9ca3af;
+  line-height: 1.7;
+}
+
+/* ================= PLANET IMAGE (SAME FOR ALL) ================= */
+
+/* Works even if image is not wrapped in a div */
+img[src*="wikipedia"] {
+  width: 200px !important;
+  height: 200px !important;
+  object-fit: cover;
+  border-radius: 50%;
+  display: block;
+  margin: 32px auto;
+  box-shadow: 0 20px 50px rgba(0,0,0,0.6);
+  animation: spin 18s linear infinite;
+}
+
+/* Rotation animation */
+@keyframes spin {
+  from { transform: rotate(0deg); }
+  to   { transform: rotate(360deg); }
+}
+/* ================= PLANET PAGE LAYOUT FIX ================= */
+
+/* Center everything nicely */
+body {
+  text-align: center;
+}
+
+/* Planet title */
+h1 {
+  margin-top: 120px;
+  font-size: 42px;
+  font-weight: 700;
+  letter-spacing: 1px;
+}
+
+/* Planet description */
+p {
+  max-width: 720px;
+  margin: 18px auto 32px;
+  font-size: 16px;
+  color: #9ca3af;
+  line-height: 1.7;
+}
+
+/* ================= INFO SECTION FIX ================= */
+
+/* Center the info list instead of left side */
+ul {
+  list-style: none;
+  padding: 0;
+  max-width: 520px;
+  margin: 0 auto 40px;
+}
+
+/* Make info look like neat cards */
+ul li {
+  background: rgba(11, 18, 38, 0.75);
+  border: 1px solid rgba(255,255,255,0.06);
+  margin-bottom: 14px;
+  padding: 14px 18px;
+  border-radius: 14px;
+  font-size: 15px;
+  color: #e5e7eb;
+}
+
+/* ================= PLANET IMAGE ================= */
+
+img[src*="wikipedia"] {
+  width: 200px !important;
+  height: 200px !important;
+  object-fit: cover;
+  border-radius: 50%;
+  display: block;
+  margin: 36px auto;
+  box-shadow: 0 15px 40px rgba(0,0,0,0.6);
+  animation: spin 22s linear infinite;
+}
+
+/* Rotation */
+@keyframes spin {
+  from { transform: rotate(0deg); }
+  to   { transform: rotate(360deg); }
+}
+
+/* ================= AUDIO ================= */
+
+audio {
+  display: block;
+  margin: 32px auto 10px;
+  width: 260px;
+}
+
+/* Audio explanation text */
+audio + p {
+  font-size: 14px;
+  color: #9ca3af;
+  max-width: 520px;
+  margin: 0 auto 40px;
+}
+
+/* ================= VIDEO ================= */
+
+iframe {
+  display: block;
+  margin: 40px auto 60px;
+  max-width: 90%;
+  border-radius: 16px;
+  box-shadow: 0 20px 50px rgba(0,0,0,0.6);
+}
+
+/* ================= MOBILE CLEANUP ================= */
+
+@media (max-width: 600px) {
+  h1 {
+    font-size: 32px;
+  }
+
+  img[src*="wikipedia"] {
+    width: 170px !important;
+    height: 170px !important;
+  }
+}
